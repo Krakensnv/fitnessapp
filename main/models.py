@@ -94,15 +94,20 @@ class Record(db.Model):
     __tablename__ = 'records'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    email = db.Column(db.String, unique=True, nullable=False)
-    hashed_password = db.Column(db.LargeBinary(80), nullable=False)
-    authenticated = db.Column(db.Boolean, default=False)
-    registered_on = db.Column(db.DateTime, nullable=True)
-    role = db.Column(db.String, default='user')
+    ca_weight = db.Column(db.Float, unique=True, nullable=False)
+    ca_height = db.Column(db.Integer, unique=True, nullable=False)
+    ca_gender = db.Column(db.Integer, unique=True, nullable=False)
+    ca_age = db.Column(db.Integer, unique=True, nullable=False)
+    ca_bmi = db.Column(db.Float, unique=True, nullable=False)
+    ca_recommend = db.Column(db.String, unique=True, nullable=False)
+    ca_bmi = db.Column(db.Float, unique=True, nullable=False)
+    created_on = db.Column(db.DateTime, nullable=True)
 
-    def __init__(self, email, plaintext_password, role='user'):
-        self.email = email
-        self.hashed_password = bcrypt.generate_password_hash(plaintext_password)
-        self.authenticated = False
-        self.registered_on = datetime.now()
-        self.role = role
+    def __init__(self, ca_weight, ca_height, ca_gender, ca_age, ca_bmi, ca_recommend):
+        self.ca_weight = ca_weight
+        self.ca_height = ca_height
+        self.ca_gender = ca_gender
+        self.ca_age = ca_age
+        self.ca_bmi = ca_bmi
+        self.ca_recommend = ca_recommend
+        self.created_on = datetime.now()
