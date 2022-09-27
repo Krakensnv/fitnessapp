@@ -97,3 +97,4 @@ def privacy():
 @bp.route('/FAQ')
 def FAQ():
     return render_template('page/FAQ.html')
+
