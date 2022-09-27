@@ -9,22 +9,41 @@
        <h1>Welcome to BMI Calculator!</h1>
       <h3 class="text-muted">
       </h3><br><br>
-             <div class="header">
-         <div class="header">
+        <div class="header">
             <h2>Please, fill the *required fields:</h2>
-         </div>
-             <div class="msg">{{ msg }}</div>
+        </div>
+        <div class="msg">{{ msg }}</div>
         <h2 class="word">
-        <form action="" method = "POST">
-            <h4>Your ID is: {{ current_user.id }}</h4>
-            <input id="cl_id" name="cl_id" type="text" placeholder="*Enter Your Id" class="textbox"/></br></br>
-            <input id="ca_weight" name="ca_weight" type="text" placeholder="*Enter Your Weight" class="textbox"/></br></br>
-            <input id="ca_height" name="ca_height" type="text" placeholder="*Enter Your Height" class="textbox"/></br></br>
-            <input id="ca_gender" name="ca_gender" type="text" placeholder="*Enter Your Gender" class="textbox"/></br></br>
-            <input id="ca_age" name="ca_age" type="text" placeholder="*Enter Your Age" class="textbox"/></br></br>
-            <input type="submit" class="btn" value="Calculate"></br></br>
-        </form>
+            <form action="" method = "POST">
+                <h4>Your ID is: {{ current_user.id }}</h4>
+                <input id="client_id" name="client_id" required type="number" min="1" placeholder="*Your ID:" class="textbox" oninput="check(this)"/></br></br>
+                <input id="ca_weight" name="ca_weight" required type="number" min="1" placeholder="*Weight in kg:" class="textbox" oninput="check(this)"/></br></br>
+                <input id="ca_height" name="ca_height" required type="number" min="1" placeholder="*Height in cm:" class="textbox" oninput="check(this)"/></br></br>
+                <input id="ca_age" name="ca_age" required type="number" min="1" placeholder="*Your Age:" class="textbox" oninput="check(this)"/></br></br>
+                <label>Gender:</label>
+                <select>
+                    <option value = "1">Male</option>
+                    <option value = "0">Female</option>
+                </select><br><br>
+                <button type="submit" class="btn" value="Submit">Calculate</button></br></br>
+            </form>
+            <script>
+                 function check(input) {
+                   if (input.value == 0) {
+                     input.setCustomValidity('The number must not be zero.');
+                   } else {
+                     // input is fine -- reset the error message
+                     input.setCustomValidity('');
+                   }
+                 }
+         </script>
+            {% if bmi %}
+	    <p>{% print("Your BMI is: {}".format(bmi)) %}</p>
+            <p>{% print("{}".format(recommend)) %}</p>
+            {% endif %}
         </h2>
+<br>
+
                  <p align="center" class="bottom">New User, no ID?  <a class="bottom" href="{{url_for('main.register')}}"> Sign up Here</a></p>
                  <p>or</p>
                  <p align="center" class="bottom"><a href="{{ url_for('main.logout')}}">Logout Here</a></p>
