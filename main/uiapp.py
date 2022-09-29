@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from flask import Flask, render_template, request, Blueprint, redirect
 from flask_login import current_user, login_user, logout_user, login_required
 from main.models import User, UserSchema
