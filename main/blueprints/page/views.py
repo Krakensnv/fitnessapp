@@ -59,3 +59,30 @@ def info():
     return render_template('calc/info.html')
 
 
+@calc.route('/test', methods=['GET', 'POST'])
+def test():
+    bmi2 = ''
+    recommend2 = ''
+    if request.method == 'POST' and 'ca_weight' in request.form:
+        weight = float(request.form.get('ca_weight'))
+        height = float(request.form.get('ca_height'))
+        bmi2 = calc_bmi2(weight, height)
+        if bmi2 > 0:
+            if bmi2 <= 16:
+                recommend2 = "You are very underweight."
+            elif bmi2 <= 18.5:
+                recommend2 = "You are underweight."
+            elif bmi2 <= 25:
+                recommend2 = "Congrats! You are Healthy."
+            elif bmi2 <= 30:
+                recommend2 = "You are overweight"
+            else:
+                recommend2 = "You are very overweight."
+        else:
+            recommend2 = "Enter valid details!"
+    return render_template("calc/test.html", bmi2=bmi2, recommend2=recommend2)
+
+
+def calc_bmi2(weight, height):
+    return round((weight / ((height / 100) ** 2)), 1)
+    return render_template('calc/test.html')
