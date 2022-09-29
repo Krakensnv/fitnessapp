@@ -9,6 +9,32 @@
        <h1>Welcome to BMI Calculator!</h1>
       <h3 class="text-muted">
       </h3><br><br>
+                        <div style="height:auto!important;height:20px;border:1px ;font-size:16px;">For more info what BMI is click
+                    <label id="method" type="button" style="color:dodgerblue; width:100px;" onclick="let sta = document.getElementById('popTitle');
+                          let mod = document.getElementById('method');
+                          if(sta.style.display == 'none')
+                          {
+                          sta.style.display='';
+                          mod.innerText='close';
+                          mod.innerHTML='close';
+                          }
+                        else
+                          {
+                          sta.style.display='none';
+                          mod.innerText='here';
+                          mod.innerHTML='here';};">here
+
+                    </label>
+
+                    <div id="popTitle" visibility="hidden" style="display:none;">
+                        <pre style="word-break:break-all;width:510px;height:100px;color:dodgerblue;">
+Body mass index (BMI) is a measure of body fat based on your
+weight in relation to your height, and applies to most adult
+men and women aged 20 and over. For children and young people
+aged 2 to 18, the BMI calculation takes into account age
+and gender as well as height and weight.
+                            </pre>
+                    </div>
         <div class="header">
             <h2>Please, fill the *required fields:</h2>
         </div>
