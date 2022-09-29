@@ -1,14 +1,14 @@
 #!/usr/bin/python
-from flask import Flask, render_template, request, Blueprint, redirect
+from flask import render_template, request, Blueprint, redirect
 from flask_login import current_user, login_user, logout_user, login_required
-from main.models import User, UserSchema
+
 from main import db
+from main.models import User, UserSchema
 
 page = Blueprint('page', __name__, template_folder='templates')
 calc = Blueprint('calc', __name__, template_folder='templates')
 
 users_schema = UserSchema(many=True)
-import time
 
 bp = Blueprint('main', __name__, template_folder='templates', static_folder='static')
 
