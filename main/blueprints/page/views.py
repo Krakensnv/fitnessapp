@@ -54,3 +54,8 @@ def calc_bmi(weight, height):
     return render_template('calc/calculator.html')
 
 
+@calc.route('/info')
+def info():
+    return render_template('calc/info.html')
+
+
