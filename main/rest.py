@@ -1,9 +1,8 @@
-from flask import jsonify, request, Blueprint
 import json
-from flask_login import login_user, current_user, login_required, logout_user
-from main.models import User, UserSchema
-from main.blueprints.page import page
+from flask import jsonify, request, Blueprint
+from flask_login import login_user
 from main import db
+from main.models import User, UserSchema
 
 blueprint = Blueprint('users', __name__)
 user_schema = UserSchema()
