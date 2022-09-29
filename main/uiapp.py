@@ -75,11 +75,6 @@ def logout():
     return redirect('/login')
 
 
-@bp.route('/test')
-def test():
-    return render_template('test.html')
-
-
 @bp.route('/home')
 def home():
     return render_template('home.html')
